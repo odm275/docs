@@ -14,12 +14,11 @@ exports.onCreateNode = ({ node, actions }) => {
 // You need to enable `gatsby-transformer-remark` to query `allMarkdownRemark`.
 // If you don't use it, query `allGoogleDocs`
 exports.createPages = async ({ graphql, actions }) =>
+  //  Should be able to pull frontmatter___createdTime from here but there's a bug, going go with id for now
   graphql(
     `
       {
-        allGoogleDocs(
-          sort: { fields: [frontmatter___createdTime], order: DESC }
-        ) {
+        allMarkdownRemark(sort: { fields: [frontmatter___id], order: DESC }) {
           edges {
             node {
               fields {
@@ -31,7 +30,8 @@ exports.createPages = async ({ graphql, actions }) =>
       }
     `
   ).then(result => {
-    result.data.allGoogleDocs.edges.forEach((post, index) => {
+    console.log(result)
+    result.data.allMarkdownRemark.edges.forEach((post, index) => {
       console.log(post)
       actions.createPage({
         path: post.node.fields.slug,

@@ -1,10 +1,7 @@
-const path = require("path")
+// const path = require("path")
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-
-console.log(process.env.GOOGLE_FOLDER_ID)
-console.log(process.env.GOOGLE_API_KEY)
 
 module.exports = {
   siteMetadata: {
@@ -36,12 +33,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [],
-      },
-    },
-    {
       resolve: "gatsby-source-google-docs",
       options: {
         // Mandatory
@@ -51,19 +42,25 @@ module.exports = {
           api_key: process.env.GOOGLE_API_KEY,
           client_id: process.env.GOOGLE_CLIENT_ID,
           client_secret: process.env.GOOGLE_CLIENT_SECRET,
-          //Optional
-          // access_type: "offline",
-          // redirect_uris: ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"],
-          // scope: [
-          //   "https://www.googleapis.com/auth/documents.readonly", // GoogleDocs API read access
-          //   "https://www.googleapis.com/auth/drive.metadata.readonly", // GoogleDrive API read access
-          // ],
-          // token_path: "google-docs-token.json",
-          // // Optional
-          // // --------
-          // fields: ["createdTime"], // https://developers.google.com/drive/api/v3/reference/files#resource
-          // // fieldsMapper: {createdTime: "date", name: "title"}, // To rename fields
+          // Optional
+          access_type: "offline",
+          redirect_uris: ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"],
+          scope: [
+            "https://www.googleapis.com/auth/documents.readonly", // GoogleDocs API read access
+            "https://www.googleapis.com/auth/drive.metadata.readonly", // GoogleDrive API read access
+          ],
+          token_path: "google-docs-token.json",
+          // Optional
+          // --------
+          fields: ["createdTime"], // https://developers.google.com/drive/api/v3/reference/files#resource
+          // fieldsMapper: { createdTime: "date", name: "title" }, // To rename fields
         },
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
