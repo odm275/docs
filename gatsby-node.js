@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) =>
   graphql(
     `
       {
-        allMarkdownRemark(
+        allGoogleDocs(
           sort: { fields: [frontmatter___createdTime], order: DESC }
         ) {
           edges {
@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) =>
       }
     `
   ).then(result => {
-    result.data.allMarkdownRemark.edges.forEach((post, index) => {
+    result.data.allGoogleDocs.edges.forEach((post, index) => {
       console.log(post)
       actions.createPage({
         path: post.node.fields.slug,
