@@ -1,8 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-console.log(process.env.GOOGLE_FOLDER_IDS.split(","))
-
 module.exports = {
   siteMetadata: {
     title: `Poetic Docs`,
@@ -37,7 +35,12 @@ module.exports = {
       options: {
         // Mandatory
         // --------
-        foldersIds: process.env.GOOGLE_FOLDER_IDS.split(","), // folders Ids can be found in Google Drive URLs
+        foldersIds: [
+          "1sohWLGcO3vOi1DgsWHf2iZP7VufP5Cac",
+          "118zWm79cCJoRC3S-CCBjLYlUdUFkUeH5",
+          "1M6wqCJXjOUAcaOTO4H4sgyk8hwPP7_Mf",
+          "1bQRyZv6WoYqtTg-qDTqlorWVeltzXLEJ",
+        ], // folders Ids can be found in Google Drive URLs
         config: {
           api_key: process.env.GOOGLE_API_KEY,
           client_id: process.env.GOOGLE_CLIENT_ID,
