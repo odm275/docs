@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
 const PostTemplate = ({ data: { post } }) => (
-  <>
+  <Layout>
     <h1>{post.frontmatter.name}</h1>
     <p>{post.frontmatter.createdTime}</p>
     <div dangerouslySetInnerHTML={{ __html: post.html }} />
-  </>
+  </Layout>
 )
 
 export default PostTemplate
@@ -19,7 +20,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         name
-        createdTime(formatString: "DD MMMM YYYY", locale: "fr")
+        # createdTime(formatString: "DD MMMM YYYY", locale: "fr")
       }
     }
   }

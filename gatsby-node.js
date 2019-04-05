@@ -1,4 +1,5 @@
 const _kebabCase = require("lodash/kebabCase") // Optional, you can use the lib you want or generate slug manually
+const path = require("path")
 
 exports.onCreateNode = ({ node, actions }) => {
   // You need to enable `gatsby-transformer-remark` to transform `GoogleDocs` type to `MarkdownRemark` type.
@@ -30,9 +31,7 @@ exports.createPages = async ({ graphql, actions }) =>
       }
     `
   ).then(result => {
-    console.log(result)
     result.data.allMarkdownRemark.edges.forEach((post, index) => {
-      console.log(post)
       actions.createPage({
         path: post.node.fields.slug,
         component: path.resolve(`./src/templates/post.js`),

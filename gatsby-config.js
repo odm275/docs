@@ -1,7 +1,7 @@
-// const path = require("path")
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+console.log(process.env.GOOGLE_FOLDER_IDS.split(","))
 
 module.exports = {
   siteMetadata: {
@@ -26,8 +26,8 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0b0c0d`,
+        theme_color: `#0b0c0d`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
@@ -37,7 +37,7 @@ module.exports = {
       options: {
         // Mandatory
         // --------
-        foldersIds: [process.env.GOOGLE_FOLDER_ID], // folders Ids can be found in Google Drive URLs
+        foldersIds: process.env.GOOGLE_FOLDER_IDS.split(","), // folders Ids can be found in Google Drive URLs
         config: {
           api_key: process.env.GOOGLE_API_KEY,
           client_id: process.env.GOOGLE_CLIENT_ID,
