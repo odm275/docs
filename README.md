@@ -7,3 +7,5 @@
 TODO:
 - Figuring out a the criteria for a set of actions that should trigger a rebuild. (Ex: google-docs saves automatically, I wouldn't want to trigger a build on every google docs save, it would happen to often and might not be stable).
 - Webhook for trigerring re-build after an element in some set of actions happens.
+
+Link: https://elegant-bhaskara-2c7d83.netlify.com/
