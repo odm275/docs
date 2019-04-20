@@ -13,8 +13,8 @@ const CardPreviews = ({ title, link }) => (
       marginTop: 10,
     }}
   >
-    <Link to={link}>
-      <h2>{title}</h2>
+    <Link to={link} style={{ width: "100%" }}>
+      <h2 style={{ textAlign: "center" }}>{title}</h2>
     </Link>
   </div>
 )
